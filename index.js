@@ -5,7 +5,9 @@ const dotenv = require('dotenv');
 const userRoute = require("./routes/user");
 const express = require("express");
 const authRoute = require("./routes/auth");
-
+const productRoute = require("./routes/product");
+const orderRoute = require("./routes/order");
+const cartRoute = require("./routes/cart");
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL).then(() => console.log("DB Connection successful")
@@ -16,6 +18,9 @@ mongoose.connect(process.env.MONGO_URL).then(() => console.log("DB Connection su
 app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/products", productRoute);
+app.use("api/orders", orderRoute);
+app.use("/api/carts", cartRoute);
 
 
 app.get("/api/test", ()=>{
