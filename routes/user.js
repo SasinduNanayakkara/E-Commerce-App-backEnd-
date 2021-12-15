@@ -9,8 +9,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req,res) =>{
             req.body.password,
             process.env.PASS_SEC
         ).toString();
-
-    }
+    } 
 
     try{
         const updatedUser = await User.findByIdAndUpdate(req.params.id, {
